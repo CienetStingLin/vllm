@@ -1,0 +1,12 @@
+steps:
+  - label: ":gcloud: Create vLLM TPU Instance"
+    plugins:
+      - docker#v5.10.0:
+          image: google/cloud-sdk:latest
+    commands:
+      - echo "--- Create TPU VM"
+      - >
+        gcloud compute tpus tpu-vm create vllm-tpu-instance \
+        --zone=us-central1-a \
+        --accelerator-type=v4-8 \
+        --version=tpu-vm-tf-2.16.0
