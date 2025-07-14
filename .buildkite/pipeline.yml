@@ -6,7 +6,7 @@ steps:
     commands:
       - echo "--- Create TPU VM"
       - >
-        gcloud compute tpus tpu-vm create vllm-tpu-instance \
-        --zone=us-central1-a \
-        --accelerator-type=v4-8 \
-        --version=tpu-vm-tf-2.16.0
+        gcloud config list
+
+
+
