@@ -1179,7 +1179,7 @@ if PRECOMPILED_RUST_FRONTEND_PATH.exists():
 for rust_extension_path in get_precompiled_rust_extension_paths():
     add_vllm_package_data(rust_extension_path.name)
 
-if _no_device():
+if _no_device() or _is_tpu():
     ext_modules = []
 
 if not ext_modules:
@@ -1202,6 +1202,9 @@ if (
 rust_extensions = rust_build.rust_extensions(
     optional=not should_require_rust_frontend()
 )
+
+if _no_device() or _is_tpu():
+    rust_extensions = []
 
 setup(
     # static metadata should rather go in pyproject.toml
